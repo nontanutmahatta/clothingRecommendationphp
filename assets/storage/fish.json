@@ -1,0 +1,106 @@
+[
+	{	
+		"id": 0,
+		"image":"./assets/images/anglefish.jpg",
+		"name":"anglefish",
+		"price":"medium",
+		"origin":"local",
+		"type":"freshwater"
+	},
+	{
+		"id": 1,
+		"image":"./assets/images/arowanafish.jpg",
+		"name":"arowanafish",
+		"price":"high",
+		"origin":"import",
+		"type":"freshwater"
+	},	
+	{
+		"id": 2,
+		"image":"./assets/images/bigheadfish.jpg",
+		"name":"bigheadfish",
+		"price":"high",
+		"origin":"local",
+		"type":"freshwater"
+	},
+	{
+		"id": 3,
+		"image":"./assets/images/bitingfish.jpg",
+		"name":"bitingfish",
+		"price":"medium",
+		"origin":"local",
+		"type":"freshwater"
+	},
+	{
+		"id": 4,
+		"image":"./assets/images/crownfish.jpg",
+		"name":"crownfish",
+		"price":"medium",
+		"origin":"import",
+		"type":"saltwater"
+	},
+	{
+		"id": 5,
+		"image":"./assets/images/dotfish.jpg",
+		"name":"dotfish",
+		"price":"low",
+		"origin":"import",
+		"type":"freshwater"
+	},
+	{
+		"id": 6,
+		"image":"./assets/images/goatfish.jpg",
+		"name":"goatfish",
+		"price":"low",
+		"origin":"local",
+		"type":"freshwater"
+	},
+	{
+		"id": 7,
+		"image":"./assets/images/goldfish.jpg",
+		"name":"goldfish",
+		"price":"low",
+		"origin":"local",
+		"type":"freshwater"
+	},
+	{
+		"id": 8,
+		"image":"./assets/images/koifish.jpg",
+		"name":"koifish",
+		"price":"high",
+		"origin":"import",
+		"type":"freshwater"
+	},
+	{
+		"id": 9,
+		"image":"./assets/images/malaweefish.jpg",
+		"name":"malaweefish",
+		"price":"low",
+		"origin":"import",
+		"type":"freshwater"
+	},
+	{
+		"id": 10,
+		"image":"./assets/images/minitigerfish.jpg",
+		"name":"minitigerfish",
+		"price":"low",
+		"origin":"local",
+		"type":"freshwater"
+	},
+	{
+		"id": 11,
+		"image":"./assets/images/mosquitoeaterfish.jpg",
+		"name":"mosquitoeaterfish",
+		"price":"low",
+		"origin":"local",
+		"type":"freshwater"
+	},
+	{
+		"id": 12,
+		"image":"./assets/images/neonfish.jpg",
+		"name":"neonfish",
+		"price":"medium",
+		"origin":"import",
+		"type":"freshwater"
+	}
+]

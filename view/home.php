@@ -4,20 +4,20 @@
 	require_once('./controller/clotheController.php');
 
 	$functions = new Functions();
-	$clotheController = new clotheController();
+	$clotheController = new fishController();
 
-	//pega todas as peças de roupa disponíveis
+	
 	$clothes = json_decode($clotheController->getAll());
 	shuffle($clothes);
 
-	//realiza a "compra" de uma peça de roupa
+	
 	if(isset($_GET['clothe_id'])){
 		$id = $_GET['clothe_id'];
 
 		$clotheController->buy($id);
 	}
 
-	//limpa a lista de comprados
+	
 	if (isset($_GET['clean'])) {
 		$clotheController->destroy();
 	}
@@ -31,8 +31,8 @@
 		<link rel="stylesheet" type="text/css" href="view/style.css">
 	</head>
 	<body>
-		<h1 class="title">Peças Disponíveis em Estoque</h1>
-		<a href="?clean" class="clean">Limpar lista de compra</a>
+		<h1 class="title">Clothes Available in Stock</h1>
+		<a href="?clean" class="clean">clear shopping list</a>
 		<div id="clothes" class="container">
 
 			<?php
@@ -45,19 +45,17 @@
 
 					<?php
 						if($functions->alreadyPurchased($clothes[$i]->id)){
-							echo "<p class='purchased'>Comprado</p>";
+							echo "<p class='purchased'>Purchased</p>";
 						}else{
-							echo "<a href='?p=final&clothe_id=".$clothes[$i]->id."'>Comprar</a>";
+							echo "<a href='?p=final&clothe_id=".$clothes[$i]->id."'>Purchase</a>";
 						}
 					?>
 
 								
 						<div class="info">
-							<p>Gênero - <?= $clothes[$i]->gender ?></p>
-							<p>Material - <?= $clothes[$i]->material ?></p>
-							<p>Cor - <?= $clothes[$i]->color ?></p>
-							<p>Origem - <?= $clothes[$i]->origin ?></p>
-							<p>Tipo - <?= $clothes[$i]->type ?></p>
+							<p>Price - <?= $clothes[$i]->price ?></p>
+							<p>Origin - <?= $clothes[$i]->origin ?></p>
+							<p>Type - <?= $clothes[$i]->type ?></p>
 						</div>
 					</div>
 					

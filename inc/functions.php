@@ -7,7 +7,7 @@
 		public function alreadyPurchased($id)
 		{
 
-			$clotheController = new clotheController();
+			$clotheController = new fishController();
 
 			$list = json_decode($clotheController->showAllPurchased());
 
@@ -20,11 +20,11 @@
 
 		public function getRecommendation($clothePurchased)
 		{
-			$clotheController = new clotheController();
+			$clotheController = new fishController();
 			
 			$available = json_decode($clotheController->getAll());
 			
-			//faz recomendações se tiver no mínino três peças de roupas disponíveis
+			
 			$purchasedCount = 0;
 			foreach ($available as $clothe) {
 				if ($this->alreadyPurchased($clothe->id)) {
@@ -39,8 +39,7 @@
 
 			$points = [];
 			$y = 0;
-			//pontua as peças
-			//as peças com maior quantidade de pontos são recomendadas
+			
 			do{
 				$tempPts = 0;
 				$tempId = 999;
@@ -50,11 +49,9 @@
 				foreach ($available as $clothe) {
 					if($clothePurchased->id != $clothe->id && !$this->alreadyPurchased($clothe->id)){
 						$pts = 0;
-						$pts += ($clothePurchased->gender == $clothe->gender)? 3 : 0;
-						$pts += ($clothePurchased->material == $clothe->material)? 2 : 0;
-						$pts += ($clothePurchased->color == $clothe->color)? 1 : 0;
+						$pts += ($clothePurchased->price == $clothe->price)? 2 : 0;
 						$pts += ($clothePurchased->origin == $clothe->origin)? 1 : 0;
-						$pts += ($clothePurchased->type != $clothe->type)? 1 : 0;
+						$pts += ($clothePurchased->type != $clothe->type)? 3 : 0;
 
 						if($pts > $tempPts){
 							$tempPts = $pts;

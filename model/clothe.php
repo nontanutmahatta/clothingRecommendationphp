@@ -1,11 +1,11 @@
 <?php
 	
-	//peça de roupa
-	Class Clothe
+	
+	Class Fish
 	{
 		public function showAll(){
 			
-			$clothes = file_get_contents('./assets/storage/clothes.json');
+			$clothes = file_get_contents('./assets/storage/fish.json');
 			return $clothes;
 		}
 
@@ -17,7 +17,7 @@
 
 		public function findById($id){
 			
-			$jsonClothes = Clothe::showAll();
+			$jsonClothes = Fish::showAll();
 			$clothes = json_decode($jsonClothes);
 
 			$clothePurchased = json_encode($clothes[$id]);
@@ -26,9 +26,9 @@
 		}
 
 		public function addToList($id){
-			//adiciona a peça de roupa a lista de comprados
+			
 
-			$clothePurchased = json_decode(Clothe::findById($id));
+			$clothePurchased = json_decode(Fish::findById($id));
 
 			$list = json_decode(file_get_contents('./assets/storage/purchased.json'));
 

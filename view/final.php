@@ -3,19 +3,19 @@
 	require_once('./controller/clotheController.php');
 
 	$functions = new Functions();
-	$clotheController = new clotheController();
+	$clotheController = new fishController();
 
 	if(!isset($_GET['clothe_id'])){
 
 		exit();
 	}
-	//pega a peça de id igual a $_GET['clothe_id']
+	
 	$clothePurchased = json_decode($clotheController->getclothe($_GET['clothe_id']));
 
-	//realiza a "compra"
+	
 	$clotheController->buy($clothePurchased->id);
 
-	//realiza a recomendação de 3 peças de roupa
+	
 	$top3 = $functions->getRecommendation($clothePurchased);	
 
 ?>
@@ -27,7 +27,7 @@
 		<link rel="stylesheet" type="text/css" href="view/style.css">
 	</head>
 	<body>
-		<h1 class="title">Compra Efetuada</h1>
+		<h1 class="title">Purchase made</h1>
 
 		<div id="final" class="container">
 			<div class="clothe-card">
@@ -35,19 +35,17 @@
 				<h5><?= $clothePurchased->name ?></h5>
 
 				<div class="purchased-info">
-					<p>Gênero - <?= $clothePurchased->gender ?></p>
-					<p>Material - <?= $clothePurchased->material ?></p>
-					<p>Cor - <?= $clothePurchased->color ?></p>
-					<p>Origem - <?= $clothePurchased->origin ?></p>
-					<p>Tipo - <?= $clothePurchased->type ?></p>
+					<p>Price - <?= $clothePurchased->price ?></p>
+					<p>Origin - <?= $clothePurchased->origin ?></p>
+					<p>Type - <?= $clothePurchased->type ?></p>
 				</div>
 			</div>
 
-			<p>O item <strong><?= $clothePurchased->name ?></strong> foi adicionado a sua lista de compras.</p>
-			<a href="?p=home">Voltar</a>					
+			<p>The item <strong><?= $clothePurchased->name ?></strong> has been added to your shopping list.</p>
+			<a href="?p=home">Go back</a>					
 		</div>
 
-		<?php echo ($top3)? "<h2 class='title'>Complete seu visual</h2>": '' ?>
+		<?php echo ($top3)? "<h2 class='title'>Complete your look</h2>": '' ?>
 
 		<div id="recommendation">
 			<?php
@@ -60,18 +58,16 @@
 					<h5><?= $clotheRecommended->name ?></h5>
 
 					<div class="info">
-						<p>Gênero - <?= $clotheRecommended->gender ?></p>
-						<p>Material - <?= $clotheRecommended->material ?></p>
-						<p>Cor - <?= $clotheRecommended->color ?></p>
-						<p>Origem - <?= $clotheRecommended->origin ?></p>
-						<p>Tipo - <?= $clotheRecommended->type ?></p>
+						<p>Price - <?= $clotheRecommended->price ?></p>
+						<p>Origin - <?= $clotheRecommended->origin ?></p>
+						<p>Type - <?= $clotheRecommended->type ?></p>
 					</div>
 					
 					<?php
 						if($functions->alreadyPurchased($clotheRecommended->id)){
-							echo "<p class='purchased'>Comprado</p>";
+							echo "<p class='purchased'>Purchased</p>";
 						}else{
-							echo "<a href='?p=final&clothe_id=".$clotheRecommended->id."'>Comprar</a>";
+							echo "<a href='?p=final&clothe_id=".$clotheRecommended->id."'>Purchase</a>";
 						}
 					?>
 
@@ -80,7 +76,7 @@
 				}
 			}else{
 				?>
-				<h2 style="color: #000;">Poucas peças disponíveis para recomendação</h2>
+				<h2 style="color: #000;">Few parts available for recommendation</h2>
 				<?php
 			}
 			?>
