@@ -5,36 +5,36 @@
 	Class fishController
 	{
 		public function getAll(){
-			$clothe = new fish();
+			$fish = new fish();
 
-			$resp = $clothe->showAll();
+			$resp = $fish->showAll();
 			return $resp;
 		}
 
 		public function showAllPurchased(){
-			$clothe = new fish();
+			$fish = new fish();
 
-			$resp = $clothe->getAllPurchased();
+			$resp = $fish->getAllPurchased();
 			return $resp;
 		}		
 
-		public function getclothe($id){
-			$clothe = new fish();
+		public function getfish($id){
+			$fish = new fish();
 
-			$resp = $clothe->findById($id);
+			$resp = $fish->findById($id);
 			return $resp;
 		}
 
 		public function buy($id){
-			$clothe = new fish();
+			$fish = new fish();
 
-			$clothe->addToList($id);
+			$fish->addToList($id);
 		}
 
 		public function destroy(){
-			$clothe = new fish();
+			$fish = new fish();
 
-			$clothe->removeAllPurchased();
+			$fish->removeAllPurchased();
 		}
 	}
 

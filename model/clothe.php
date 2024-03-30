@@ -5,42 +5,42 @@
 	{
 		public function showAll(){
 			
-			$clothes = file_get_contents('./assets/storage/fish.json');
-			return $clothes;
+			$fish = file_get_contents('./assets/storage/fish.json');
+			return $fish;
 		}
 
 		public function getAllPurchased(){
 			
-			$clothes = file_get_contents('./assets/storage/purchased.json');
-			return $clothes;
+			$fish = file_get_contents('./assets/storage/purchased.json');
+			return $fish;
 		}
 
 		public function findById($id){
 			
-			$jsonClothes = Fish::showAll();
-			$clothes = json_decode($jsonClothes);
+			$jsonfish = Fish::showAll();
+			$fish = json_decode($jsonfish);
 
-			$clothePurchased = json_encode($clothes[$id]);
+			$fishPurchased = json_encode($fish[$id]);
 
-			return $clothePurchased;
+			return $fishPurchased;
 		}
 
 		public function addToList($id){
 			
 
-			$clothePurchased = json_decode(Fish::findById($id));
+			$fishPurchased = json_decode(Fish::findById($id));
 
 			$list = json_decode(file_get_contents('./assets/storage/purchased.json'));
 
 			$ok = true;
-			foreach ($list as $clothe) {
-				if ($clothePurchased->id == $clothe->id) {
+			foreach ($list as $fish) {
+				if ($fishPurchased->id == $fish->id) {
 						$ok = false;
 				}
 			}
 
 			if($ok){
-				array_push($list, $clothePurchased);
+				array_push($list, $fishPurchased);
 
 				$jsonList = json_encode($list);
 

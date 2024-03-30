@@ -7,27 +7,27 @@
 		public function alreadyPurchased($id)
 		{
 
-			$clotheController = new fishController();
+			$fishController = new fishController();
 
-			$list = json_decode($clotheController->showAllPurchased());
+			$list = json_decode($fishController->showAllPurchased());
 
-			foreach ($list as $clothe) {
-				if($clothe->id == $id){
+			foreach ($list as $fish) {
+				if($fish->id == $id){
 					return  true;
 				}
 			}
 		}
 
-		public function getRecommendation($clothePurchased)
+		public function getRecommendation($fishPurchased)
 		{
-			$clotheController = new fishController();
+			$fishController = new fishController();
 			
-			$available = json_decode($clotheController->getAll());
+			$available = json_decode($fishController->getAll());
 			
 			
 			$purchasedCount = 0;
-			foreach ($available as $clothe) {
-				if ($this->alreadyPurchased($clothe->id)) {
+			foreach ($available as $fish) {
+				if ($this->alreadyPurchased($fish->id)) {
 					$purchasedCount++;
 				}
 			}
@@ -46,16 +46,16 @@
 				$tempIndex = 999;
 				$i = 0;
 
-				foreach ($available as $clothe) {
-					if($clothePurchased->id != $clothe->id && !$this->alreadyPurchased($clothe->id)){
+				foreach ($available as $fish) {
+					if($fishPurchased->id != $fish->id && !$this->alreadyPurchased($fish->id)){
 						$pts = 0;
-						$pts += ($clothePurchased->price == $clothe->price)? 2 : 0;
-						$pts += ($clothePurchased->origin == $clothe->origin)? 1 : 0;
-						$pts += ($clothePurchased->type != $clothe->type)? 3 : 0;
+						$pts += ($fishPurchased->price == $fish->price)? 2 : 0;
+						$pts += ($fishPurchased->origin == $fish->origin)? 1 : 0;
+						$pts += ($fishPurchased->type != $fish->type)? 3 : 0;
 
 						if($pts > $tempPts){
 							$tempPts = $pts;
-							$tempId = $clothe->id;
+							$tempId = $fish->id;
 							$tempIndex = $i;
 						}
 					}
@@ -73,11 +73,11 @@
 
 			$top3 = [];
 
-			$clothe1 = json_decode($clotheController->getclothe($points[0]));
-			$clothe2 = json_decode($clotheController->getclothe($points[1]));
-			$clothe3 = json_decode($clotheController->getclothe($points[2]));
+			$fish1 = json_decode($fishController->getfish($points[0]));
+			$fish2 = json_decode($fishController->getfish($points[1]));
+			$fish3 = json_decode($fishController->getfish($points[2]));
 
-			array_push($top3, $clothe1, $clothe2, $clothe3);
+			array_push($top3, $fish1, $fish2, $fish3);
 
 			return $top3;
 		}
